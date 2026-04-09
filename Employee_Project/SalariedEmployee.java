@@ -1,11 +1,11 @@
 /**
  * Name: Maurice Ruffin
- * Date: 04/03/2026
+ * Date: 04/09/2026
  * Purpose: Derived class for salaried employees.
- * This file demonstrates inheritance by extending the Employee base class.
+ * Demonstrates inheritance, interface implementation, and polymorphism.
  */
 
-public class SalariedEmployee extends Employee {
+public class SalariedEmployee extends Employee implements Payable {
     private double annualSalary;
 
     public SalariedEmployee(int employeeId, String name, String position, double annualSalary) {
@@ -22,10 +22,20 @@ public class SalariedEmployee extends Employee {
         return "Salaried";
     }
 
+    
+    /*
+     * Interface implementation
+     * Polymorphism: Different behavior for calculating pay
+     */
+    @Override
+    public double calculatePay() {
+        return annualSalary / 52;
+    }
+
     @Override
     public String getDetails() {
         return super.getDetails() +
                " | Type: Salaried" +
-               " | Annual Salary: $" + String.format("%.2f", annualSalary);
+               " | Weekly Pay: $" + String.format("%.2f", calculatePay());
     }
 }

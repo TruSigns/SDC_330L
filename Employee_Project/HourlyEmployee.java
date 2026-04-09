@@ -1,11 +1,11 @@
 /**
  * Name: Maurice Ruffin
- * Date: 04/03/2026
+ * Date: 04/09/2026
  * Purpose: Derived class for hourly employees.
- * This file demonstrates inheritance by extending the Employee base class.
+ * Demonstrates inheritance, interface implementation, and polymorphism.
  */
 
-public class HourlyEmployee extends Employee {
+public class HourlyEmployee extends Employee implements Payable {
     private double hourlyRate;
     private int hoursPerWeek;
 
@@ -28,11 +28,19 @@ public class HourlyEmployee extends Employee {
         return "Hourly";
     }
 
+    /*
+     * Interface implementation
+     * Polymorphism: Different calculation compared to salaried employees
+     */
+    @Override
+    public double calculatePay() {
+        return hourlyRate * hoursPerWeek;
+    }
+
     @Override
     public String getDetails() {
         return super.getDetails() +
                " | Type: Hourly" +
-               " | Hourly Rate: $" + String.format("%.2f", hourlyRate) +
-               " | Hours Per Week: " + hoursPerWeek;
+               " | Weekly Pay: $" + String.format("%.2f", calculatePay());
     }
 }
