@@ -1,7 +1,8 @@
 /**
  * Name: Maurice Ruffin
- * Date: 04/09/2026
- * Purpose: Week 2 project main application file demonstrating interfaces and polymorphism.
+ * Date: 04/13/2026
+ * Purpose: Week 3 project main application file for the Employee Management Application.
+ * This file demonstrates abstraction, constructors, and access specifiers.
  */
 
 import java.util.ArrayList;
@@ -11,22 +12,19 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Week 2 Project");
-        System.out.println("Interfaces and Polymorphism");
-        System.out.println("Maurice Ruffin");
-        System.out.println("========================================\n");
-
+        MessageService.displayHeader();
         MessageService.displayWelcome();
 
         /*
          * Composition is demonstrated here because Department contains Employee objects.
+         * Constructor use is demonstrated by creating objects with realistic values.
          */
         Department department = new Department("Information Technology");
 
         /*
-         * Inheritance is demonstrated here because HourlyEmployee and SalariedEmployee
-         * extend the Employee base class.
-         * Interface is demonstrated because both implement Payable.
+         * Abstraction is demonstrated here because Employee is now an abstract class.
+         * The application creates HourlyEmployee and SalariedEmployee objects through
+         * Employee references.
          */
         Employee emp1 = new HourlyEmployee(101, "Jordan Miles", "Support Specialist", 22.50, 40);
         Employee emp2 = new SalariedEmployee(102, "Alicia Carter", "Project Manager", 72000.00);
@@ -39,8 +37,8 @@ public class Main {
         department.addEmployee(emp4);
 
         /*
-         * Polymorphism using interface
-         * Different objects treated as Payable
+         * Polymorphism is demonstrated here by treating different employee types
+         * as Payable objects through the interface.
          */
         ArrayList<Payable> payroll = new ArrayList<>();
         payroll.add((Payable) emp1);
@@ -79,12 +77,14 @@ public class Main {
 
                 case "4":
                     System.out.println();
-                    System.out.println("Weekly Pay (Polymorphism Demo)");
+                    System.out.println("Weekly Pay");
                     System.out.println("========================================");
 
-                    for (Payable p : payroll) {
-                        System.out.println("Pay: $" + String.format("%.2f", p.calculatePay()));
+                    for (Payable employee : payroll) {
+                        System.out.println("Pay: $" + String.format("%.2f", employee.calculatePay()));
                     }
+
+                    System.out.println();
                     break;
 
                 case "5":
