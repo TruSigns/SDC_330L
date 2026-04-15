@@ -1,26 +1,20 @@
 /**
  * Name: Maurice Ruffin
- * Date: 04/13/2026
+ * Date: 04/15/2026
  * Purpose: Derived class for hourly employees.
  * This file demonstrates inheritance, abstraction, constructors, and interface implementation.
  */
 
-public class HourlyEmployee extends Employee implements Payable{
+public class HourlyEmployee extends Employee implements Payable {
     private double hourlyRate;
     private int hoursPerWeek;
 
-    /*
-     * Full constructor.
-     */
     public HourlyEmployee(int employeeId, String name, String position, double hourlyRate, int hoursPerWeek) {
         super(employeeId, name, position);
         this.hourlyRate = hourlyRate;
         this.hoursPerWeek = hoursPerWeek;
     }
 
-    /*
-     * Overloaded constructor.
-     */
     public HourlyEmployee(String name, String position, double hourlyRate) {
         super(name, position);
         this.hourlyRate = hourlyRate;
@@ -40,9 +34,6 @@ public class HourlyEmployee extends Employee implements Payable{
         return "Hourly";
     }
 
-    /*
-     * Polymorphism and interface use are demonstrated here.
-     */
     @Override
     public double calculatePay() {
         return hourlyRate * hoursPerWeek;
